@@ -100,12 +100,19 @@ function cumleKur(
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 1 parametre göndererek "Hello World!" stringini elde edin, 
 sonucu konsolde gözlemleyin */
 
+console.log("Non Oto Test:", cumleKur("Hello World!"));
 /* (Oto test yok) cumleKur fonksiyonuna yalnızca 2 parametre göndererek "Hello World!" stringini elde edin, 
 sonucu konsolde gözlemleyin */
+
+console.log("Non Oto Test 2:", cumleKur("Hello ", "World!"));
 
 /* (Oto test var) cumleKur fonksiyonuna 5 parametre göndererek "Ben iyi bir yazılımcı olacağım!" stringini 
 elde edin, sonucu `bircumle` değişkenine atayın ve konsolde gözlemleyin */
 var bircumle;
+
+bircumle = cumleKur("Ben ", "iyi ", "bir ", "yazılımcı ", "olacağım!");
+
+console.log("Oto Test 1:", bircumle);
 
 /* kodlar buraya */
 
@@ -128,9 +135,17 @@ var bircumle;
 			5. Oluşturulan yeni dizi döndürülecek.
 	*/
 
-function cumlelereDonustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function cumlelereDonustur(diziArr, kelimeAyrac) {
+  let cumleler = [];
+  for (const cumle in diziArr) {
+    let cumlem = null;
+    cumlem = diziArr[cumle].join(kelimeAyrac);
+    cumleler.push(cumlem);
+  }
+  return cumleler;
 }
+
+console.log("Görev 2: Cümleye Dönüştür:", cumlelereDonustur(cumleler, " "));
 
 /* GÖREV 2:
 		paragrafOlustur fonksiyonuna aşağıdakileri uygulayın.
