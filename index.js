@@ -136,13 +136,13 @@ console.log("Oto Test 1:", bircumle);
 	*/
 
 function cumlelereDonustur(diziArr, kelimeAyrac) {
-  let cumleler = [];
+  let sentences = [];
   for (const cumle in diziArr) {
     let cumlem = null;
     cumlem = diziArr[cumle].join(kelimeAyrac);
-    cumleler.push(cumlem);
+    sentences.push(cumlem);
   }
-  return cumleler;
+  return sentences;
 }
 
 console.log("Görev 2: Cümleye Dönüştür:", cumlelereDonustur(cumleler, " "));
@@ -160,9 +160,15 @@ console.log("Görev 2: Cümleye Dönüştür:", cumlelereDonustur(cumleler, " ")
 			6. Oluşturulan paragraf döndürülecek
 	*/
 
-function paragrafOlustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function paragrafOlustur(diziArr, callback1, callback2) {
+  let sntncs = callback2(diziArr, " ");
+  return callback1(sntncs[1], sntncs[3], sntncs[5], sntncs[7], sntncs[9]);
 }
+
+console.log(
+  "Görev 2: Paragraf Oluştur:",
+  paragrafOlustur(cumleler, cumleKur, cumlelereDonustur)
+);
 
 /* 	GÖREV 3:
 		Yukarıda isimleri sebzeler ve meyveler olan 2 dizi bulunmaktadır. Bu dizileri kullanarak aşağıdaki görevleri tamamlayın.
@@ -170,6 +176,11 @@ function paragrafOlustur(/* kodlar buraya */) {
  */
 //3a çözümü
 /* kodlar buraya */
+
+meyveler.shift();
+meyveler.pop();
+
+console.log("Görev 3a: Meyvelerin İlk ve Son Elemanı:", meyveler);
 
 /* 			3b.  Bir tavşan ve bir kirpi arkadaşlar sebzeler dizimizin peşine düştü. Tavşan => 🐇 , Kirpi=> 🦔 , 
 Tavşanla kirpi sebzeleri ele geçirmek için bir plan kurdular. Tavşan diziye önden saldıracak, kirpi ise 
@@ -179,13 +190,19 @@ Kirpiyi dizinin son elemanına ekleyin 🦔
 //3b çözümü
 /* kodlar buraya */
 
+sebzeler.unshift("🐇");
+sebzeler.push("🦔");
+
+console.log("Görev 3b: Tavşan ve Kirpi Ekleme:", sebzeler);
+
 /* 			3c. manav isminde bir dizi oluşturun.`meyveler` dizisi ilk elemanlara, `sebzeler` dizisi son 
 elemanlara denk gelecek şekilde, iki diziyi birleştirip sonucu manav dizisine aktarın. (.concat metodu)
  */
 //3c çözümü
 /* kodlar buraya */
 
-var manav;
+var manav = [...meyveler, ...sebzeler];
+console.log("Görev 3: Manav kurma operasyonu", manav);
 
 /* 	GÖREV 4:
 		Yeni kurulmuş bir mesajlaşma startup firması atılan mesajları emojilerle zenginleştirmek istiyor. 
@@ -204,9 +221,33 @@ var manav;
 			4. elde edilen string döndürülecek
  */
 
-function emojileriDonustur(/* kodlar buraya */) {
-  /* kodlar buraya */
+function emojileriDonustur(message, emo) {
+  for (const item in emo) {
+    if (emo.hasOwnProperty(item)) {
+      const value = emo[item];
+      message = message.replaceAll(value, item);
+      console.log(message);
+    }
+  }
+  return message;
+  // let copyEmoji = { ...emo };
+  // console.log("Kopya obje", copyEmoji);
+  // const copyValues = Object.values(copyEmoji);
+  // console.log("Kopya deger", copyValues);
+  // const copyKeys = Object.keys(copyEmoji);
+  // console.log("Kopya anahtar", copyKeys);
+  // console.log("Orjinal Obje", emo);
+  // for (let i = 0; i < copyValues.length; i++) {
+  //   message = message.replaceAll(copyValues[i], copyKeys[i]);
+  // }
 }
+
+const text = "Ahahaha çok güldüm :d";
+
+console.log(
+  "Görev 4: Sembolleri Emojilere Dönüştürme:",
+  emojileriDonustur(text, emojiler)
+);
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa() {
