@@ -225,8 +225,14 @@ function emojileriDonustur(message, emo) {
   for (const item in emo) {
     if (emo.hasOwnProperty(item)) {
       const value = emo[item];
-      message = message.replaceAll(value, item);
-      console.log(message);
+
+      let caseUpper = item.toUpperCase();
+
+      console.log("İşe yarıyor mu", caseUpper);
+      message = message.replaceAll(caseUpper, item);
+
+      message = message.replaceAll(item, value);
+      console.log("item:", item, "içerik", message);
     }
   }
   return message;
@@ -242,7 +248,7 @@ function emojileriDonustur(message, emo) {
   // }
 }
 
-const text = "Ahahaha çok güldüm :d";
+let text = "Ahahaha :) çok güldüm :D seviliyorsun <3";
 
 console.log(
   "Görev 4: Sembolleri Emojilere Dönüştürme:",
